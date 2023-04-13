@@ -1,7 +1,5 @@
 import { useState } from "react";
 
-let i = 0;
-
 function Memes() {
   const [data, setData] = useState([]);
   const [currentJokeIndex, setCurrentJokeIndex] = useState(0);
@@ -23,27 +21,21 @@ function Memes() {
         // console.log(response);
       })
       .catch((error) => console.error(error));
-    i = i + 1;
   };
 
   const handleNextJoke = () => {
     setCurrentJokeIndex((prevIndex) => (prevIndex + 1) % data.length);
-    i = i + 1;
   };
 
   return (
     <div className="flex flex-col items-center justify-center gap-5 mt-2">
       <div className="flex flex-col gap-5">
-        {i === 0 || i > 12 ? (
-          <div
-            className="hover:cursor-pointer border-2 border-black p-3 text-xl"
-            onClick={fetchJokes}
-          >
-            Generate MEME
-          </div>
-        ) : (
-          ""
-        )}
+        <div
+          className="hover:cursor-pointer border-2 bg-gray-200 rounded-xl hover:shadow-lg p-2 text-xl"
+          onClick={fetchJokes}
+        >
+          Generate MEME
+        </div>
       </div>
 
       <div className="flex gap-5">
