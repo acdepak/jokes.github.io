@@ -10,7 +10,7 @@ function SearchJoke() {
 
   const handleSearch = async () => {
     setLoading(true);
-    await fetch(`/Any?containhttps://v2.jokeapi.dev/jokes=${keyword}`)
+    await fetch(`https://v2.jokeapi.dev/joke/Any?contains=${keyword}`)
       .then((response) => response.json())
       .then((data) => {
         if (data.type === "single") {
@@ -31,7 +31,7 @@ function SearchJoke() {
   };
 
   return (
-    <div className="flex justify-center flex-col items-center">
+    <div className="flex flex-col items-center gap-3">
       <div className="flex flex-col items-center gap-3">
         <div className="text-xl">Search joke by keyword</div>
         <div className="flex items-center justify-center gap-2 border-2 ">
@@ -59,9 +59,9 @@ function SearchJoke() {
             {!!jokes ? (
               <p>{jokes}</p>
             ) : !!setup ? (
-              <div className="flex flex-col">
-                <div>Setup: {setup}</div>
-                <div>Delivery: {delivery}</div>
+              <div className="flex flex-col text-xl gap-3">
+                <div className="">Setup: {setup}</div>
+                <div className="">Delivery: {delivery}</div>
               </div>
             ) : null}
           </div>

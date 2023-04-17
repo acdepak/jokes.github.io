@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+let i = 1;
 function Memes() {
   const [data, setData] = useState([]);
   const [currentJokeIndex, setCurrentJokeIndex] = useState(0);
@@ -25,6 +26,8 @@ function Memes() {
 
   const handleNextJoke = () => {
     setCurrentJokeIndex((prevIndex) => (prevIndex + 1) % data.length);
+
+    i > 11 ? (i = 1) : (i += 1);
   };
 
   return (
@@ -42,22 +45,21 @@ function Memes() {
         {data.length > 0 && (
           <div key={data[currentJokeIndex].id} className="text-3xl text-center">
             <div className="text-blue-700 p-5 margin-5 border-2">
-              <p className="">
-                <img
-                  src={data[currentJokeIndex].image}
-                  alt={"Error: Unable to fetch"}
-                  height={500}
-                  width={550}
-                ></img>
-              </p>
+              <img
+                src={data[currentJokeIndex].image}
+                alt={"Error: Unable to fetch"}
+                height={500}
+                width={550}
+              ></img>
             </div>
+            <div>{i}</div>
           </div>
         )}
 
         <div className="flex ">
           {data.length > 0 && (
             <div
-              className="hover:cursor-pointer bg-gray-100 flex items-center p-3 text-xl"
+              className="hover:cursor-pointer bg-gray-100  absolute right-1/4 top-1/2 p-3 text-xl"
               onClick={handleNextJoke}
             >
               Next MEME
