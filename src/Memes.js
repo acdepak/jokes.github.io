@@ -30,6 +30,12 @@ function Memes() {
     i > 11 ? (i = 1) : (i += 1);
   };
 
+  const handlePrevJoke = () => {
+    setCurrentJokeIndex((prevIndex) => (prevIndex - 1) % data.length);
+
+    i > 11 ? (i = 1) : (i -= 1);
+  };
+
   return (
     <div className="flex flex-col items-center justify-center gap-5 mt-2">
       <div className="flex flex-col gap-5">
@@ -37,8 +43,19 @@ function Memes() {
           className="hover:cursor-pointer border-2 bg-gray-200 rounded-xl hover:shadow-lg p-2 text-xl"
           onClick={fetchJokes}
         >
-          Generate MEME
+          Generate new MEMEs
         </div>
+      </div>
+
+      <div className="flex ">
+        {i > 1 && data.length > 1 && (
+          <div
+            className="hover:cursor-pointer bg-gray-100 absolute left-1/4 top-1/2 p-3 text-xl"
+            onClick={handlePrevJoke}
+          >
+            Previous MEME
+          </div>
+        )}
       </div>
 
       <div className="flex gap-5">
